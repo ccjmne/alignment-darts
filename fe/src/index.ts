@@ -1,2 +1,3 @@
-import '../scss/main.css'
+import '../scss/main.scss'
 import './theme-switcher'
+import './login-form'
