@@ -86,8 +86,8 @@ module.exports = {
         'newlines-between': 'always-and-inside-groups',
         'alphabetize': { order: 'asc' },
       }],
-      'import/prefer-default-export': 'off',
-      'import/no-default-export': ['warn'],
+      'import/prefer-default-export': 'warn',
+      'import/no-default-export': 'off',
       'indent': 'off',
       '@typescript-eslint/indent': ['warn', 2, { SwitchCase: 0 }],
       'max-len': ['warn', 140, 4, {
@@ -105,7 +105,7 @@ module.exports = {
       'quotes': ['warn', 'single', { allowTemplateLiterals: true, avoidEscape: true }],
       'quote-props': ['warn', 'consistent-as-needed'],
       'semi': 'off',
-      '@typescript-eslint/semi': ['warn', 'always'],
+      '@typescript-eslint/semi': ['warn', 'never'],
       '@typescript-eslint/strict-boolean-expressions': ['warn'],
     },
     ...{
@@ -118,6 +118,7 @@ module.exports = {
       'import/no-extraneous-dependencies': ['warn', { devDependencies: true }],
       'no-empty-function': 'off',
       '@typescript-eslint/no-empty-function': ['error'],
+      '@typescript-eslint/no-non-null-assertion': 'off',
       'no-unused-private-class-members': ['error'],
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': ['error', { vars: 'all', args: 'all', argsIgnorePattern: '^_' }],
@@ -125,6 +126,7 @@ module.exports = {
       '@typescript-eslint/no-use-before-define': ['error', { ignoreTypeReferences: true }],
       'no-useless-constructor': 'off',
       '@typescript-eslint/no-useless-constructor': ['error'],
+      'no-return-assign': 'off',
       'no-shadow': 'off',
       '@typescript-eslint/no-shadow': ['error', { allow: ['_'] }],
     },
@@ -133,7 +135,6 @@ module.exports = {
     files: ['{webpack,vite}.config.ts', 'tooling/**/*.{js,ts}', '**/*.d.ts'],
     rules: {
       'import/no-extraneous-dependencies': ['warn', { devDependencies: true }],
-      'import/no-default-export': 'off',
     },
   }],
-};
+}
