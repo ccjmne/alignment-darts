@@ -78,7 +78,7 @@ module.exports = {
         assertionStyle: 'as',
         objectLiteralTypeAssertions: 'allow-as-parameter',
       }],
-      // '@typescript-eslint/consistent-type-imports': ['warn'], // wait until import/no-duplicate can auto-merge type imports
+      '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports', fixStyle: 'inline-type-imports' }],
       '@typescript-eslint/explicit-function-return-type': ['warn', { allowExpressions: true }],
       'import/extensions': ['warn', 'never'],
       'import/order': ['warn', {
@@ -88,6 +88,7 @@ module.exports = {
       }],
       'import/prefer-default-export': 'warn',
       'import/no-default-export': 'off',
+      'import/no-duplicates': ['warn', { 'prefer-inline': true }], // doesn't work yet, see https://github.com/import-js/eslint-plugin-import/issues/2715
       'indent': 'off',
       '@typescript-eslint/indent': ['warn', 2, { SwitchCase: 0 }],
       'max-len': ['warn', 140, 4, {
@@ -129,6 +130,7 @@ module.exports = {
       'no-return-assign': 'off',
       'no-shadow': 'off',
       '@typescript-eslint/no-shadow': ['error', { allow: ['_'] }],
+      'no-void': 'off',
     },
   },
   overrides: [{
