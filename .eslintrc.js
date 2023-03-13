@@ -80,6 +80,7 @@ module.exports = {
       }],
       '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports', fixStyle: 'inline-type-imports' }],
       '@typescript-eslint/explicit-function-return-type': ['warn', { allowExpressions: true }],
+      'func-names': ['warn', 'as-needed'],
       'import/extensions': ['warn', 'never'],
       'import/order': ['warn', {
         'groups': ['builtin', 'external', 'internal', 'unknown', 'parent', 'sibling', 'index', 'object'],
@@ -114,11 +115,11 @@ module.exports = {
       'class-methods-use-this': ['error', { exceptMethods: ['connectedCallback', 'disconnectedCallback'] }],
       'default-case': 'off', // in ts projects, prefer @typescript-eslint/switch-exhaustiveness-check
       '@typescript-eslint/switch-exhaustiveness-check': ['error'],
-      'func-names': ['warn', 'as-needed'],
       'global-require': 'off', // deprecated, see https://eslint.org/docs/rules/global-require
       'import/no-extraneous-dependencies': ['warn', { devDependencies: true }],
       'no-empty-function': 'off',
       '@typescript-eslint/no-empty-function': ['error'],
+      '@typescript-eslint/no-floating-promise': ['error', { ignoreVoid: true, ignoreIIFE: true }],
       '@typescript-eslint/no-non-null-assertion': 'off',
       'no-unused-private-class-members': ['error'],
       'no-unused-vars': 'off',
@@ -130,7 +131,7 @@ module.exports = {
       'no-return-assign': 'off',
       'no-shadow': 'off',
       '@typescript-eslint/no-shadow': ['error', { allow: ['_'] }],
-      'no-void': 'off',
+      'no-void': ['error', { allowAsStatement: true }],
     },
   },
   overrides: [{
