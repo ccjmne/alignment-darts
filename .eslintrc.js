@@ -3,8 +3,9 @@ npm install --save-dev \
 eslint \
 eslint-config-airbnb-base \
 eslint-config-airbnb-typescript \
+eslint-plugin-import \
 @typescript-eslint/eslint-plugin \
-@typescript-eslint/parser eslint
+@typescript-eslint/parser
 */
 
 module.exports = {
@@ -119,7 +120,7 @@ module.exports = {
       'import/no-extraneous-dependencies': ['warn', { devDependencies: true }],
       'no-empty-function': 'off',
       '@typescript-eslint/no-empty-function': ['error'],
-      '@typescript-eslint/no-floating-promise': ['error', { ignoreVoid: true, ignoreIIFE: true }],
+      '@typescript-eslint/no-floating-promises': ['error', { ignoreVoid: true, ignoreIIFE: true }],
       '@typescript-eslint/no-non-null-assertion': 'off',
       'no-unused-private-class-members': ['error'],
       'no-unused-vars': 'off',
