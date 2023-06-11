@@ -57,6 +57,9 @@ module.exports = {
         { blankLine: 'always', prev: 'break', next: '*' },
         { blankLine: 'always', prev: 'directive', next: '*' },
         { blankLine: 'any', prev: 'directive', next: 'directive' },
+        { blankLine: 'always', prev: '*', next: 'export' },
+        { blankLine: 'always', prev: 'export', next: '*' },
+        { blankLine: 'always', prev: 'multiline-expression', next: '*' },
       ],
       'padded-blocks': ['warn', { blocks: 'never', switches: 'never', classes: 'always' }],
       'object-curly-newline': ['warn', {
