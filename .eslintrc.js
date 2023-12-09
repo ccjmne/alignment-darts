@@ -3,7 +3,6 @@ npm install --save-dev \
 eslint \
 eslint-config-airbnb-base \
 eslint-config-airbnb-typescript \
-eslint-plugin-import \
 @typescript-eslint/eslint-plugin \
 @typescript-eslint/parser
 */
@@ -112,7 +111,7 @@ module.exports = {
       'quote-props': ['warn', 'consistent-as-needed'],
       'semi': 'off',
       '@typescript-eslint/semi': ['warn', 'never'],
-      '@typescript-eslint/strict-boolean-expressions': ['warn'],
+      '@typescript-eslint/strict-boolean-expressions': ['warn', { allowString: false }],
     },
     ...{
       // code smells
@@ -125,6 +124,7 @@ module.exports = {
       '@typescript-eslint/no-empty-function': ['error'],
       '@typescript-eslint/no-floating-promises': ['error', { ignoreVoid: true, ignoreIIFE: true }],
       '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/no-unnecessary-condition': ['error'],
       'no-unused-private-class-members': ['error'],
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': ['error', { vars: 'all', args: 'all', argsIgnorePattern: '^_' }],
