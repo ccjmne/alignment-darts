@@ -8,10 +8,14 @@ const endpoint = 'http://localhost:8000'
 const ddb = new DynamoDB({ endpoint, region: 'localhost' });
 
 (async function main() {
-  const CX_TABLE = 'connections'
+  const SESSIONS_TABLE = 'sessions'
+
+  console.info('Deleting all tables...')
   await ddb.listTables({}).then(({ TableNames = [] }) => Promise.all(TableNames.map(name => ddb.deleteTable({ TableName: name }))))
+
+  console.info(`Rebuilding table '${SESSIONS_TABLE}'...`)
   await ddb.createTable({
-    TableName: CX_TABLE,
+    TableName: SESSIONS_TABLE,
     KeySchema: [
       { AttributeName: 'primaryKey', KeyType: 'HASH' },
     ],
@@ -23,4 +27,6 @@ const ddb = new DynamoDB({ endpoint, region: 'localhost' });
       WriteCapacityUnits: 5,
     },
   })
+
+  console.info('Done.')
 }())
