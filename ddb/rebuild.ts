@@ -17,10 +17,10 @@ const ddb = new DynamoDB({ endpoint, region: 'localhost' });
   await ddb.createTable({
     TableName: SESSIONS_TABLE,
     KeySchema: [
-      { AttributeName: 'primaryKey', KeyType: 'HASH' },
+      { AttributeName: 'pk', KeyType: 'HASH' },
     ],
     AttributeDefinitions: [
-      { AttributeName: 'primaryKey', AttributeType: 'S' },
+      { AttributeName: 'pk', AttributeType: 'S' },
     ],
     ProvisionedThroughput: {
       ReadCapacityUnits: 5,
