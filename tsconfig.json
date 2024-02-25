@@ -3,5 +3,6 @@
     "target": "ESNext",
     "module": "NodeNext",
     "strict": true
-  }
+  },
+  "include": ["**/*.ts", ".eslintrc.cjs"]
 }

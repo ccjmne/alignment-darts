@@ -2,6 +2,7 @@
   "name": "alignment-darts",
   "version": "1.0.0",
   "main": "/dev/null",
+  "type": "module",
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.521.0",
     "@aws-sdk/lib-dynamodb": "^3.521.0"
