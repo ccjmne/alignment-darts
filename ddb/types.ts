@@ -1,8 +1,9 @@
 export type Item = string
-export type User = string
+export type Name = string
 export type CxId = string
 export type SsId = `${string}-${string}-${string}-${string}-${string}`
 export type Vote = [x: number, y: number]
+export type User = { cx?: CxId, votes: Record<Item, Vote> }
 
 export type Config = {
   items: Item[];
@@ -11,7 +12,6 @@ export type Config = {
 
 export type Session = {
   pk: SsId;
-  cx: Record<CxId, User>;
   cfg: Config;
-  votes: Record<Item, Record<User, Vote>>;
+  usrs: Record<Name, User>;
 }

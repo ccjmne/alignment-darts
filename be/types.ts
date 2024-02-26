@@ -1,9 +1,9 @@
-import { type Config, type CxId, type Item, type SsId, type User, type Vote } from '../ddb/types'
+import { type Config, type CxId, type Item, type SsId, type Name, type Vote } from '../ddb/types'
 
 export type MessageLogin = {
   cx: CxId;
   action: 'login';
-  user: User;
+  user: Name;
   ss?: SsId;
 }
 
