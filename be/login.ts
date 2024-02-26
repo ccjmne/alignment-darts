@@ -12,7 +12,7 @@ export default async function handler({ body: message, requestContext: { connect
   }
 
   return (typeof message.ss !== 'undefined'
-    ? get(message.ss).then(session => login(session, message.user, cx))
+    ? get(message.ss).then(session => put(login(session, message.user, cx)))
     : put({
       pk: crypto.randomUUID(),
       cfg: { items: [], dimensions: [[0, 0], [0, 0]] },
