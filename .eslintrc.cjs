@@ -140,7 +140,7 @@ module.exports = {
     },
   },
   overrides: [{
-    files: ['{webpack,vite}.config.ts', 'tooling/**/*.{js,ts}', '**/*.d.ts'],
+    files: ['{webpack,vite,tailwind}.config.ts', 'tooling/**/*.{js,ts}', '**/*.d.ts'],
     rules: {
       'import/no-extraneous-dependencies': ['warn', { devDependencies: true }],
     },
