@@ -84,7 +84,7 @@ module.exports = {
       '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports', fixStyle: 'inline-type-imports' }],
       '@typescript-eslint/explicit-function-return-type': ['warn', { allowExpressions: true }],
       'func-names': ['warn', 'as-needed'],
-      'import/extensions': ['warn', 'never'],
+      'import/extensions': ['warn', 'never', { js: 'always' }], // Importing .js files in TypeScript projects is discouraged, let's retain the extension then
       'import/order': ['warn', {
         'groups': ['builtin', 'external', 'internal', 'unknown', 'parent', 'sibling', 'index', 'object'],
         'newlines-between': 'always-and-inside-groups',
