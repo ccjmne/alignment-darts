@@ -3,7 +3,9 @@
     "strict": true,
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "Bundler"
+    "moduleResolution": "Bundler",
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false
   },
   "include": ["**/*.ts", ".eslintrc.cjs", "fe/postcss.config.cjs"]
 }
