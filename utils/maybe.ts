@@ -31,3 +31,7 @@ export function has<T, K extends keyof T>(t: T, ...k: K[]): t is T & Has<Pick<T,
 export function hasKey<K extends Key>(...k: K[]): <T extends { [k in K]?: unknown }>(t: T) => t is T & Has<Pick<T, K>> {
   return <T extends { [k in K]: unknown }>(t: T): t is T & Has<Pick<T, K>> => has(t, ...k)
 }
+
+export function isOneOf<T extends string | number>(...values: T[]): (t: unknown) => t is T {
+  return (t: unknown): t is T => values.includes(t as T)
+}
