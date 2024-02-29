@@ -45,7 +45,7 @@ export default class ThemeSwitcher extends PanElement {
       <div tabindex="0" role="button" class="btn m-1">${this.options.label}${this.options.icon}</div>
       <ul tabindex="0" class="dropdown-content z-[1] menu shadow bg-base-200 rounded-box">
         ${Object.values(ThemeSwitcher.OPTIONS).map(({ label, mode, icon }) => html`
-          <li><a class="justify-end" @click=${() => this.setMode(mode)}>${label}${icon}</a></li>
+          <li><a class="justify-end ${this.options.label === label ? 'active' : ''}" @click=${() => this.setMode(mode)}>${label}${icon}</a></li>
         `)}
       </ul>
     </div>`
