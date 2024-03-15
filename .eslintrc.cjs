@@ -144,5 +144,10 @@ module.exports = {
     rules: {
       'import/no-extraneous-dependencies': ['warn', { devDependencies: true }],
     },
+  }, {
+    files: ['**/*.lit.ts'],
+    rules: {
+      '@typescript-eslint/unbound-method': 'off', // See https://lit.dev/docs/components/events/#understanding-this-in-event-listeners and https://github.com/lit/lit/pull/523
+    },
   }],
 }
