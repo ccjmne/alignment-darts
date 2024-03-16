@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import { type CxId, type Name, type Session } from '../ddb/types'
-import { hasKey } from '../utils/maybe'
 
-import { callbackAPI } from './callbackAPI'
 import { get, put } from './db'
+import notify from './notify'
 import { type Event, type Response } from './srv'
 
 export default async function handler({ body: message, requestContext: { connectionId: cx } }: Event): Promise<Response> {
@@ -18,11 +17,7 @@ export default async function handler({ body: message, requestContext: { connect
       cfg: { items: [], dimensions: [[0, 0], [0, 0]] },
       usrs: { [message.user]: { cx, votes: {} } },
     }))
-    .then(session => Promise.allSettled(
-      Object.values(session.usrs)
-        .filter(hasKey('cx'))
-        .map(({ cx: ConnectionId }) => callbackAPI.postToConnection({ ConnectionId, Data: JSON.stringify(session) }).promise()),
-    ))
+    .then(notify)
     .then(() => ({ statusCode: 200 }))
 }
 
