@@ -1,4 +1,4 @@
-import { html, type TemplateResult } from 'lit'
+import { html, nothing, type TemplateResult } from 'lit'
 import { customElement } from 'lit/decorators.js'
 
 import { isOneOf } from '../../utils/maybe'
@@ -48,7 +48,7 @@ export default class ThemeSwitcher extends PanElement {
       </div>
       <ul tabindex="0" class="dropdown-content z-[1] menu shadow bg-base-200 rounded-box">
         ${Object.values(ThemeSwitcher.OPTIONS).map(({ label, mode, icon }) => html`
-          <li><a class="${this.options.label === label ? 'active' : ''}" @click=${() => this.setMode(mode)}>${icon}${label}</a></li>
+          <li><a class="btn btn-sm justify-start flex-nowrap" disabled="${this.options.label === label || nothing}" @click=${() => this.setMode(mode)}>${icon}${label}</a></li>
         `)}
       </ul>
     </div>`
