@@ -13,7 +13,7 @@ const isValid = isOneOf('light', 'dark', 'system')
 @customElement('theme-switcher')
 export default class ThemeSwitcher extends PanElement {
 
-  static OPTIONS: Record<Mode, Option> = {
+  private static readonly OPTIONS: Record<Mode, Option> = {
     light: {
       mode: 'light',
       label: 'Light',
@@ -38,17 +38,17 @@ export default class ThemeSwitcher extends PanElement {
   }
 
   private readonly root = document.documentElement
-  private options: Option = ThemeSwitcher.OPTIONS.system
+  private active: Option = ThemeSwitcher.OPTIONS.system
 
   render(): TemplateResult {
     return html`<div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn m-1">
-        ${this.options.icon}${this.options.label}
+        ${this.active.icon}${this.active.label}
         <svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2 opacity-60" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9L12 15L18 9" /></svg>
       </div>
       <ul tabindex="0" class="dropdown-content z-[1] menu shadow bg-base-200 rounded-box">
         ${Object.values(ThemeSwitcher.OPTIONS).map(({ label, mode, icon }) => html`
-          <li><a class="btn btn-sm justify-start flex-nowrap" disabled="${this.options.label === label || nothing}" @click=${() => this.setMode(mode)}>${icon}${label}</a></li>
+          <li><a class="btn btn-sm btn-ghost justify-start flex-nowrap" disabled="${this.active.mode === mode || nothing}" @click=${() => this.setMode(mode)}>${icon}${label}</a></li>
         `)}
       </ul>
     </div>`
@@ -59,13 +59,13 @@ export default class ThemeSwitcher extends PanElement {
     const theme = localStorage.getItem('theme')
     this.setMode(isValid(theme) ? theme : 'system')
     window.matchMedia('(prefers-color-scheme: dark)') // Ideally, you should remove the listener when the element is disconnected
-      .addEventListener('change', () => { if (this.options.mode === 'system') { this.setMode('system') } })
+      .addEventListener('change', () => { if (this.active.mode === 'system') { this.root.dataset.theme = ThemeSwitcher.for('system') } })
   }
 
   private setMode(mode: Mode): void {
     localStorage.setItem('theme', mode)
     this.root.dataset.theme = ThemeSwitcher.for(mode)
-    this.options = ThemeSwitcher.OPTIONS[mode]
+    this.active = ThemeSwitcher.OPTIONS[mode]
     this.requestUpdate()
   }
 
