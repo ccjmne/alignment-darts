@@ -1,7 +1,6 @@
 import { html, type TemplateResult } from 'lit'
 import { customElement } from 'lit/decorators.js'
 
-import join from './socket-service'
 import PanElement from './utils/PanElement'
 
 @customElement('login-form')
@@ -9,11 +8,6 @@ export default class LoginForm extends PanElement {
 
   private readonly username: { value: string, valid: boolean, dirty: boolean } = { value: '', valid: false, dirty: false }
   private readonly session: { value: string, valid: boolean } = { value: '', valid: true }
-
-  private connect(e: Event): void {
-    e.preventDefault()
-    join({ username: this.username.value, session: this.session.value !== '' ? this.session.value : undefined })
-  }
 
   private updateUsername({ target }: { target: HTMLInputElement }): void {
     this.username.value = target.value
@@ -31,7 +25,7 @@ export default class LoginForm extends PanElement {
   render(): TemplateResult {
     return html`<div class="bg-base-200 p-8 rounded shadow-md w-full sm:w-96">
       <h2 class="text-2xl font-semibold mb-4">Login</h2>
-      <form class="space-y-5" @submit=${this.connect}>
+      <form class="space-y-5">
         <label class="input flex items-center gap-2 ${this.username.dirty && (this.username.valid ? 'input-success' : 'input-error')}">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none">
             <path d="M12 15C8.8299 15 6.01077 16.5306 4.21597 18.906C3.82968 19.4172 3.63653 19.6728 3.64285 20.0183C3.64773 20.2852 3.81533 20.6219 4.02534 20.7867C4.29716 21 4.67384 21 5.4272 21H18.5727C19.3261 21 19.7028 21 19.9746 20.7867C20.1846 20.6219 20.3522 20.2852 20.3571 20.0183C20.3634 19.6728 20.1703 19.4172 19.784 18.906C17.9892 16.5306 15.17 15 12 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
