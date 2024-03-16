@@ -11,12 +11,14 @@ export default class LoginForm extends PanElement {
     this.#username.value = value
     this.#username.valid = value.length >= 1
     this.#username.dirty ||= value !== '' // Don't set dirty if the string is empty, don't ever unser it
+    this.requestUpdate()
   }
 
   @property()
   set session(value: string) {
     this.#session.value = value
     this.#session.valid = value === '' || /^[0-9A-F]{8}-[0-9A-F]{4}-[4][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i.test(value)
+    this.requestUpdate()
   }
 
   readonly #username: { value: string, valid: boolean, dirty: boolean } = { value: '', valid: false, dirty: false }
