@@ -42,7 +42,10 @@ export default class ThemeSwitcher extends PanElement {
 
   render(): TemplateResult {
     return html`<div class="dropdown dropdown-end">
-      <div tabindex="0" role="button" class="btn m-1">${this.options.icon}${this.options.label}</div>
+      <div tabindex="0" role="button" class="btn m-1">
+        ${this.options.icon}${this.options.label}
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2 opacity-60" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9L12 15L18 9" /></svg>
+      </div>
       <ul tabindex="0" class="dropdown-content z-[1] menu shadow bg-base-200 rounded-box">
         ${Object.values(ThemeSwitcher.OPTIONS).map(({ label, mode, icon }) => html`
           <li><a class="${this.options.label === label ? 'active' : ''}" @click=${() => this.setMode(mode)}>${icon}${label}</a></li>
