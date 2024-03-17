@@ -1,0 +1,38 @@
+                               TERMS AND CONCEPTS
+                               ------------------
+
+1. USER
+
+    The USER represents an entity that can provide VOTES on ITEMS.  They have a
+    name, which can change, and a CONNECTION While they are connected to a
+    SESSION.  USERS don't exist outside of the context of a SESSION.
+
+    Within a SESSION, no two USERS can share the same name, regardless of case.
+    A user may exist in a SESSION beyond the time where they coincided with an
+    active socket, if they have cast any VOTES.
+
+2. ITEM
+
+    The ITEMS are the topics that are discussed during a SESSION.  Each item
+    comprises a name and an number of VOTES issued by USERS.
+
+3. VOTE
+
+    A VOTE is issued by a USER and regards an ITEM.  A VOTE contains both
+    coordinates, along the horizontal and vertical axes, of the estimation
+    given by a USER for their perceived location of the corresponding ITEM on
+    the scales defined by the SESSION configuration.
+
+4. SESSION
+
+    A SESSION is the core concept around which everything is built.  USERS come
+    together into a SESSION and define its configuration: the ITEMS that will
+    be discussed, as well as the names and scales of the two axes along which
+    voting is permitted.
+
+5. CONNECTION
+
+    A CONNECTION is what makes a USER "online".  A USER issues VOTES through a
+    CONNECTION, and may change their name while remaining identifiable through
+    that same CONNECTION.  A CONNECTION corresponds to a Web socket session
+    that a client browser establishes with the API Gateway endpoint.
