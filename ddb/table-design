@@ -1,5 +1,5 @@
 pk    sk        items                 dimensions
 UUID  'config'  Record<UUID, string>  [string, string]
 
-pk    sk              cx    name    votes
-UUID  'user::'<UUID>  UUID  string  Record<UUID, [number, number]>
+pk    sk             cx    name    votes
+UUID  'user#'<UUID>  UUID  string  Record<UUID, [number, number]>
