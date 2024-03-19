@@ -1,0 +1,24 @@
+Access patterns
+---------------
+
+[SESSION] CREATE SESSION
+PutObject { pk, sk = 'config', items = {}, dimensions = ['x', 'y'] }
+
+[SESSION] UPDATE SESSION
+UpdateObject { pk, sk, items, dimensions }
+
+[USER] JOIN SESSION
+PutObject { pk, sk = 'user#'<UUID>, cx, name, votes = {} }
+
+[USER] LEAVE SESSION
+UpdateObject { pk, sk = 'user#'<UUID>, cx }
+
+[USER] RENAME SELF
+UpdateObject { pk, sk = 'user#'<UUID>, name }
+
+[USER] VOTE
+UpdateObject { pk, sk = 'user#'<UUID>, votes }
+
+[USER] KICK
+DeleteObject { pk, sk = 'user#'<UUID> }
+
